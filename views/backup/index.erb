@@ -1,0 +1,73 @@
+<!doctype html>　
+<html>
+<head>
+  <title>Line Chart</title>
+  <script src="Chart.js"></script>
+  <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.js"></script>
+  <meta name = "viewport" content = "initial-scale = 1, user-scalable = no">
+</head>
+<body>
+<input type="button" id="synch" value="load">
+<div id="container">
+	<canvas id="canvas" height="80" width="150"></canvas>
+</div>
+
+<script>
+$(function () {
+     $('#synch').click(function () {
+         $.ajax({
+             type: 'GET',
+             url: 'http://localhost:4567/graph',
+             dataType: 'json',
+             success: function (json) {
+                 var ary = json;
+                 var xaxis = [];
+                 var yaxis = [];
+                 for (var i = 0, l = ary.length; i < l; i++) {
+                     if (i % 2 == 0) {
+                         xaxis.push(ary[i]);
+                     } else {
+                         yaxis.push(ary[i]);
+                     }
+                }
+                var lineChartData = {
+                     labels: xaxis,
+                     datasets: [{
+                             fillColor: "rgba(220,220,220,0.5)",
+                             strokeColor: "rgba(220,220,220,1)",
+                             pointColor: "rgba(220,220,220,1)",
+                             pointStrokeColor: "#fff",
+                             data: yaxis
+                         },
+
+                     ]
+                }
+			    var pieData = [
+			            {
+			                value: 30,
+			                color:"#F38630"
+			            },
+			            {
+			                value : 50,
+			                color : "#E0E4CC"
+			            },
+			            {
+			                value : 20,
+			                color : "#69D2E7"
+			            }
+			    ];
+
+                var myLine = new Chart(document.getElementById("canvas").getContext("2d")).Pie(pieData, {responsive : true	});
+
+             },
+             
+             error: function () {
+                 $('#container').append('<p>' + 'Error! something is wrong.' + '<p>');
+             }
+         })
+     })
+})
+</script>
+</body>
+</html>
+	

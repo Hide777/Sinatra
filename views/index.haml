@@ -1,0 +1,10 @@
+%div.container
+ %h2= @message
+ %a(href="/sample/table" title="abc_def")テーブル 
+ %br
+ %a(href="/sample/test" title="abc_def")テスト
+ %br
+ 
+ - @doc.css('#topicsfb > div.topicsindex > ul.emphasis > li > a').each do |a_tag|
+  %h4= a_tag.text
+  

@@ -1,0 +1,64 @@
+/* ------------------------------------- /
+/    Footer
+/* ------------------------------------- */
+#footer{
+    text-align: center;
+    padding: 40px 0;
+    background-color: #7E7E7E;
+}
+
+/*  logo
+/*--------------------------------- */
+#footer .logo{
+    margin-top: 0;
+}
+
+.logo p { /* 丸とフォントのスタイリング */
+    margin: 0;
+    padding-top: 34px;
+    width: 100px;
+    height: 100px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    font-size: 26px;
+    color: #7E7E7E;
+    font-weight: bold;
+    background-color: #fff;
+}
+
+/*  nav
+/*--------------------------------- */
+#footer .navbar-nav>li {
+    border-right: 1px solid #000;
+}
+#footer .navbar-nav>li.first{
+    border-left: 1px solid #000;
+}
+
+#footer .navbar-nav li a{
+    color: #fff;
+}
+
+/*  sns-icon
+/*--------------------------------- */
+.sns-icon{
+    margin-top: 30px;
+}
+
+.sns-icon li{
+    padding-left: 20px;
+}
+.sns-icon li:hover{
+    color: #fff;
+}
+
+/*  copy
+/*--------------------------------- */
+.copy{
+    margin-top: 20px;
+}
+
+.copy span{
+    color: #333;
+}
