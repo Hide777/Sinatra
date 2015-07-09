@@ -3,7 +3,7 @@ require 'rubygems'
 require 'bundler'
 Bundler.require
 #require 'sinatra'
-require 'sinatra/reloader'
+require 'sinatra/reloader' if development?
 #require 'sinatra/contrib/all'
 #require 'haml'
 #require 'csv'
@@ -12,16 +12,15 @@ require 'open-uri'
 require 'nokogiri'
 require 'robotex'
 
-set :environment, :development
-#set :environment, :production
-
 module App
   class Gauge < ActiveRecord::Base
   end
   
   class Application < Sinatra::Base  
-    configure do
+    configure :development do
       register Sinatra::Reloader
+    end
+    configure do
       register Sinatra::ActiveRecordExtension
       set :database, {adapter: "sqlite3", database: "./db/development.sqlite3"}
     end
@@ -47,7 +46,7 @@ module App
       @users = Gauge.all
       haml :'sample/table'
     end
-    get '/test' do
+    get '/sample/test' do
       @message = "Test Routing"
       haml :'sample/test'
     end

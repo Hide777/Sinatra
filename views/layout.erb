@@ -21,6 +21,30 @@
   </head>
   
   <body background="../images/top-image.jpg">
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="../js/bootstrap.min.js"></script>
+	
+	<nav class="navbar navbar-default">
+	    <div class="container">
+	        <div class="navbar-header">
+	            <a class="navbar-brand">ホームシステム</a>
+	        </div>
+	        <!-- 3.リストの配置 -->
+	        <ul class="nav navbar-nav">
+	            <li class="active"><a href="/haml">お知らせ</a></li>
+	            <li><a href="/sample/table">在庫確認</a></li>
+	            <li><a href="/sample/test">入出庫登録</a></li>
+	        </ul>
+	        <!-- 4.ボタン -->
+	        <button type="button" class="btn btn-default navbar-btn">
+	            <span class="glyphicon glyphicon-envelope"></span>
+	        </button>
+	    </div>
+	</nav>
+
 	<%= yield %>	 
+
   </body>
 </html>
