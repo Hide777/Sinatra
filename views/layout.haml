@@ -1,26 +1,32 @@
 !!! 5
-%html
+%html{ :lang => "jp" }
  %head
   %meta{ :charset => 'utf-8' }
   %meta{ 'http-equiv' => 'X-UA-Compatible', :content => 'IE=edge' }
   %meta{ :name => 'viewport-8', :content => 'width=device-width, initial-scale=1' }
-  %title Sample App Haml
+  %title
+   = "Sample App Haml"
   %link{ href: "../css/my.css", rel: "stylesheet" }
-  -# Bootstrap
+  / Bootstrap
   %link{ href: "../css/bootstrap.min.css", rel: "stylesheet" }
  
  %body{ :background => '...../images/top-image.jpg' }
-  -# %script{ src: "https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"}
+  %script{ src: "https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"}
   %script{ src: "../js/bootstrap.min.js"}
-  %nav{ :class => 'navbar navbar-default' }
+    
+  %nav.navbar.navbar-default
    %div.container
     %div.navbar-header
      %a.navbar-brand ホームシステム
     %ul.nav.navbar-nav
      %li.active
-      %a{ :href => '/sc' } お知らせ
+      %a{ :href => '/haml' } お知らせ
      %li
       %a{ :href => '/sample/table' } 在庫確認
      %li
       %a{ :href => '/sample/test' } 入出庫登録   
+     %li
+      %a{ :href => '/sc' } sc
+      
   = yield
+  

@@ -39,8 +39,8 @@ module App
       erb :index, locals: {foo: @message}
     end
     get '/haml' do
-      @message = "haml"
-      haml :index
+      @message = "Sample App Haml"
+      haml :index, locals: {foo: @message}
     end
     get '/sample/table' do
       @users = Gauge.all
@@ -51,7 +51,7 @@ module App
       haml :'sample/test'
     end
     get '/sc' do
-      @message = "スクリピング"
+      @message = "スクレイピング"
       url = 'http://www.yahoo.co.jp/'
       # user_agentの偽装
       user_agent = 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.63 Safari/537.36'
@@ -61,7 +61,7 @@ module App
         f.read
       end
       @doc = Nokogiri::HTML.parse(html, nil, charset)
-      haml :index
+      haml :'sample/sc'
     end
     get '/graph' do
       @message = "Hello Graph Page"
