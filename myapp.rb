@@ -13,10 +13,10 @@ require 'nokogiri'
 require 'robotex'
 
 module App
-  class Gauge < ActiveRecord::Base
-  end
-  
   class Application < Sinatra::Base  
+    before do
+      @edition = "20150711Ed"
+    end
     configure :development do
       register Sinatra::Reloader
     end
@@ -24,7 +24,10 @@ module App
       register Sinatra::ActiveRecordExtension
       set :database, {adapter: "sqlite3", database: "./db/development.sqlite3"}
     end
-        
+   
+    class Gauge < ActiveRecord::Base
+    end  
+   
     def file_convert
       datatime=""
       CSV.foreach("./temp.csv","r") do |data|
@@ -32,14 +35,14 @@ module App
       end
       return datatime
     end
-    
+        
     # routing
     get '/' do
-      @message = "Bootstrap3 Templete"
+      @message = "Bootstrap3 "
       erb :index, locals: {foo: @message}
     end
     get '/test' do
-      @message = "Bootstrap3 Templete"
+      @message = "Bootstrap3 "
       erb :test
     end
     get '/haml' do
