@@ -1,53 +1,82 @@
 <!DOCTYPE html>
-<html lang='jp'>
+<html>
+
   <head>
-    <meta charset='utf-8'>
-    <meta content='IE=edge' http-equiv='X-UA-Compatible'>
-    <meta content='width=device-width, initial-scale=1' name='viewport'>
-    <title>Sample App Haml    </title>
-    <link href='../css/my.css' rel='stylesheet'>
-    <link href='../css/bootstrap.min.css' rel='stylesheet'>
+    <link data-require="bootstrap-css@*" data-semver="3.1.1" rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+    <script data-require="jquery@1.11.0" data-semver="1.11.0" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script data-require="bootstrap@*" data-semver="3.1.1" src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script data-require="angular.js@1.2.16" data-semver="1.2.16" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.17/angular.min.js"></script>
+    <script data-require="angular-ui-bootstrap@*" data-semver="0.10.0" src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.10.0.min.js"></script>
+    <script>
+      var app = angular.module('sampleApp',['ui.bootstrap']);
+      app.controller('MainCtrl',
+        function($scope) {
+          $scope.title = 'Responsive Navbar with ui.bootstrap Sample';
+          $scope.isCollapsed = true;
+        }
+      );
+    </script>
   </head>
-  
-  <body background='...../images/top-image.jpg'>
-    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'></script>
-    <script src='../js/bootstrap.min.js'></script>
-    <div id='wrap'>
-      <nav class='navbar navbar-default'>
-        <div class='container'>
-          <div class='navbar-header'>
-            <a class='navbar-brand' href='/'>ホームシステム</a>
-          </div>
-          <ul class='nav navbar-nav'>
-            <li class='active'>
-              <a href='/haml'>お知らせ</a>
-            </li>
-            <li>
-              <a href='/haml/table'>在庫確認</a>
-            </li>
-            <li>
-              <a href='/haml/test'>入出庫登録</a>
-            </li>
-            <li>
-              <a href='/haml/sc'>スクレイピング</a>
+
+  <body ng-app='sampleApp' ng-controller="MainCtrl">
+    <h1 ng-cloak>{{title}}</h1>
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="container-fluid">
+      
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" ng-click="isCollapsed = !isCollapsed">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Brand</a>
+        </div>
+        
+        <div collapse="isCollapsed" class="navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Link</a></li>
+            <li><a href="#">Link</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+                <li class="divider"></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
             </li>
           </ul>
+          
+          <form class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Search" />
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+          </form>
+          
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Link</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </li>
+          </ul>
+          
         </div>
-      </nav>
-	      <div class='container'>
-	        <h2>Sample App Haml</h2>
-	        <a href='/sample/table' title='abc_def'>テーブル</a>
-	        <br>
-	        <a href='/sample/test' title='abc_def'>テスト</a>
-	        <br>
-	      </div>
-	    <div id='footer'>
-	      <div class='container'>
-	        <p class='text-muted'>Copyright &#169; 2013 example.com All Rights Reserved.</p>
-	      </div>
-	    </div>
-    </div>
+      </div>
+      
+    </nav>
   </body>
-</html>
 
+</html>
 
