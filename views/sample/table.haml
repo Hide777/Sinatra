@@ -2,22 +2,23 @@
 %html
  %head
   %title= @message
+ 
  %body
-  #test
   %div.container
-   %h2 Table haml sample
-
-   %table.table
-    %tr
-     %th.success Menu
-    %tr
-     %td.success calubo
-   #header
-   %h3 Haml!
-   #content
-   %p.text-danger I love Haml
-   #array
-   %table.table.table-striped
-    - @users.each do |item|
-     %tr
-      %td= item.serial
+   %dvi.row
+    %h2 Table haml sample
+   %div.row
+    %div.col-xs-2
+     %table.table
+      %tr
+       %th.success Menu
+      %tr
+       %td.success calubo
+     %h3 Haml!
+    %div.col-xs-7
+     %p{:class => "text-success", :align => "center"} I love Haml
+    %div.col-xs-3
+     %table.table.table-striped
+      - @users.each do |item|
+       %tr
+        %td.text-warning= item.serial
