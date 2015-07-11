@@ -4,29 +4,34 @@
   %meta{ :charset => 'utf-8' }
   %meta{ 'http-equiv' => 'X-UA-Compatible', :content => 'IE=edge' }
   %meta{ :name => 'viewport', :content => 'width=device-width, initial-scale=1' }
-  %title
-   = "Sample App Haml"
-  %link{ href: "../css/my.css", rel: "stylesheet" }
-  / Bootstrap
+  %title Sample App Haml
   %link{ href: "../css/bootstrap.min.css", rel: "stylesheet" }
+  %link{ href: "../css/my.css", rel: "stylesheet" }
+  %link{ href: "../css/test.css", rel: "stylesheet" }
  
- %body{ :background => '...../images/top-image.jpg' }
+ %body{ :background => '../images/top-image.jpg' }
   %script{ src: "https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"}
   %script{ src: "../js/bootstrap.min.js"}
+
+  %div{:id => 'wrap'}
     
-  %nav.navbar.navbar-default
-   %div.container
-    %div.navbar-header
-     %a.navbar-brand{ :href => '/' }  ホームシステム
-    %ul.nav.navbar-nav
-     %li.active
-      %a{ :href => '/haml' } お知らせ
-     %li
-      %a{ :href => '/sample/table' } 在庫確認
-     %li
-      %a{ :href => '/sample/test' } 入出庫登録   
-     %li
-      %a{ :href => '/sc' } スクレイピング
-      
-  = yield
+   %nav.navbar.navbar-default
+    %div.container
+     %div.navbar-header
+      %a.navbar-brand{ :href => '/' }  ホームシステム
+     %ul.nav.navbar-nav
+      %li.active
+       %a{ :href => '/haml' } お知らせ
+      %li
+       %a{ :href => '/haml/table' } 在庫確認
+      %li
+       %a{ :href => '/haml/test' } 入出庫登録   
+      %li
+       %a{ :href => '/haml/sc' } スクレイピング
+
+   = yield
   
+  %div{:id => 'footer'}
+   %div.container
+    %p{:align => 'center'} Copyright &#169; 2015 dolphin.com All Rights Reserved.
+    

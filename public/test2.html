@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="jp">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap3 Templete</title>
+    <link href="../css/my.css" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  
+  <body background="../images/top-image.jpg">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<div id='wrap'>
+		<nav class="navbar navbar-default">
+		    <div class="container">
+		        <div class="navbar-header">
+		            <a class="navbar-brand" href="/">ホームシステム</a>
+		        </div>
+		        <!-- 3.リストの配置 -->
+		        <ul class="nav navbar-nav">
+		            <li class="active"><a href="/haml">お知らせ</a></li>
+		            <li><a href="/haml/table">在庫確認</a></li>
+		            <li><a href="/test">入出庫登録</a></li>
+		        </ul>
+		        <!-- 4.ボタン -->
+		        <button type="button" onclick="location.href='/haml/sc'" class="btn btn-default navbar-btn">
+		            <span class="glyphicon glyphicon-envelope"></span>
+		        </button>
+		    </div>
+		</nav>
+	
+		<div class="container">	
+		 yield
+		</div>
+			</div> 
+			
+		<div id='footer'>
+		  <div class="container">		
+	        <p>Copyright &#169; 2013 example.com All Rights Reserved.</p>
+		  </div>
+		</div>
+ 
+  </body>
+</html>

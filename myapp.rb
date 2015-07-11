@@ -38,19 +38,23 @@ module App
       @message = "Bootstrap3 Templete"
       erb :index, locals: {foo: @message}
     end
+    get '/test' do
+      @message = "Bootstrap3 Templete"
+      erb :test
+    end
     get '/haml' do
       @message = "Sample App Haml"
       haml :index, locals: {foo: @message}
     end
-    get '/sample/table' do
+    get '/haml/table' do
       @users = Gauge.all
       haml :'sample/table'
     end
-    get '/sample/test' do
+    get '/haml/test' do
       @message = "Test Routing"
       haml :'sample/test'
     end
-    get '/sc' do
+    get '/haml/sc' do
       @message = "スクレイピング"
       url = 'http://www.yahoo.co.jp/'
       # user_agentの偽装
