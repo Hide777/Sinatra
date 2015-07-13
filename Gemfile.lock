@@ -18,10 +18,13 @@ GEM
     celluloid (0.16.0)
       timers (~> 4.0.0)
     daemons (1.2.3)
+    eventmachine (1.0.2)
     eventmachine (1.0.2-x86-mingw32)
+    ffi (1.9.10)
     ffi (1.9.10-x86-mingw32)
     haml (4.0.6)
       tilt
+    hitimes (1.2.2)
     hitimes (1.2.2-x86-mingw32)
     i18n (0.7.0)
     listen (2.10.1)
@@ -30,6 +33,8 @@ GEM
       rb-inotify (>= 0.9)
     mini_portile (0.6.2)
     multi_json (1.11.1)
+    nokogiri (1.6.6.2)
+      mini_portile (~> 0.6.0)
     nokogiri (1.6.6.2-x86-mingw32)
       mini_portile (~> 0.6.0)
     rack (1.6.4)
@@ -61,7 +66,12 @@ GEM
       rack-test
       sinatra (~> 1.4.0)
       tilt (>= 1.3, < 3)
+    sqlite3 (1.3.5)
     sqlite3 (1.3.5-x86-mingw32)
+    thin (1.2.11)
+      daemons (>= 1.0.9)
+      eventmachine (>= 0.12.6)
+      rack (>= 1.0.0)
     thin (1.2.11-x86-mingw32)
       daemons (>= 1.0.9)
       eventmachine (>= 0.12.6)
@@ -72,6 +82,7 @@ GEM
     tzinfo (0.3.44)
 
 PLATFORMS
+  ruby
   x86-mingw32
 
 DEPENDENCIES
@@ -89,6 +100,3 @@ DEPENDENCIES
   sinatra-contrib
   sqlite3 (= 1.3.5)
   thin (= 1.2.11)
-
-BUNDLED WITH
-   1.10.4
