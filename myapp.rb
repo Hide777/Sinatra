@@ -15,7 +15,7 @@ require 'robotex'
 module App
   class Application < Sinatra::Base  
     before do
-      @edition = "20150711Ed"
+      @edition = "20150713Ed"
     end
     configure :development do
       register Sinatra::Reloader
