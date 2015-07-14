@@ -1,6 +1,6 @@
 %div.container
  %h2= @message
- %a(href="/sample/table" title="abc_def")テーブル 
- %br
- %a(href="/sample/test" title="abc_def")テスト
- %br 
+ %p
+  %a(href="/haml/table" title="abc_def") Table 
+ %a{:class => "btn btn-default", :href=>"/haml/test", :title=>"abc_def", :role=>"button"}Test
+  

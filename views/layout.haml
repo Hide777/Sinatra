@@ -15,21 +15,29 @@
 
   %div{:id => 'wrap'}
     
-   %nav.navbar.navbar-default
-    %div.container
+   %nav{ :class => "navbar navbar-default", :role => "navigation" }
+    %div.container-fluid
      %div.navbar-header
       %a.navbar-brand{ :href => '/' }  ホームシステム
-     %ul.nav.navbar-nav
-      %li.active
-       %a{ :href => '/haml' } お知らせ
-      %li
-       %a{ :href => '/haml/table' } 在庫確認
-      %li
-       %a{ :href => '/haml/test' } 入出庫登録   
-      %li
-       %a{ :href => '/haml/sc' } スクレイピング
+      %button{ :type => "button", :class => "navbar-toggle", :'data-toggle' => "collapse", :'data-target' => ".navbar-collapse" }
+       %span.sr-only Toggle navigation
+       %span.icon-bar
+       %span.icon-bar
+       %span.icon-bar
+    
+     %div.navbar-collapse.collapse
+      %ul.nav.navbar-nav
+       %li.active
+        %a{ :href => '/haml' } お知らせ
+       %li
+        %a{ :href => '/haml/table' } 在庫確認
+       %li
+        %a{ :href => '/haml/test' } 入出庫登録   
+       %li
+        %a{ :href => '/haml/sc' } スクレイピング
 
-   = yield
+   %div.container
+    = yield
   
   %div{:id => 'footer'}
    %div.container
