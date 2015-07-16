@@ -1,8 +1,11 @@
-html,body {
+html {
   height: 100%;
   /* html と body 要素はパディングやマージンを持てません。*/
 }
-
+body {
+	padding-top: 60px; 
+  height: 100%;
+}
 /* フッターを下部へ押しやるための、コンテンツのラッパー */
 #wrap {
   min-height: 100%;

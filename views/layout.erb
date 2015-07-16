@@ -14,21 +14,32 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<script src="../js/bootstrap.min.js"></script>
 		<div id='wrap'>
-			<nav class="navbar navbar-default">
+			<nav class="navbar navbar-default navbar-fixed-top">
 				<div class="container">
 					<div class="navbar-header">
 						<a class="navbar-brand" href="/">ホームシステム</a>
+			      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				      <span class="sr-only">Toggle navigation</span>
+				      <span class="icon-bar"></span>
+				      <span class="icon-bar"></span>
+				      <span class="icon-bar"></span>
+	          </button>
 					</div>
 					<!-- リストの配置 -->
+	        <div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
 						<li class="active"><a href="/haml">お知らせ</a></li>
 						<li><a href="/haml/table">在庫確認</a></li>
-						<li><a href="/test">入出庫登録</a></li>
+						<li><a href="/test">テスト</a></li>
 					</ul>
+					
 					<!-- ボタン -->
 					<button type="button" onclick="location.href='/haml/sc'" class="btn btn-default navbar-btn">
 						<span class="glyphicon glyphicon-envelope"></span>
 					</button>
+					
+					</div>
+					
 				</div>
 			</nav>
 			<div class="container">	
@@ -37,6 +48,7 @@
 		</div>  
 		<div id='footer'>
 			<div class="container">		
+				<p></p>
 				<p align="center">Copyright &#169; 2015 dolphin.com All Rights Reserved.</p>
 			</div>
 		</div>
