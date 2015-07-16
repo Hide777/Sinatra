@@ -5,19 +5,17 @@
  %body
   %div.container
    %dvi.row
-    %h2 Table haml sample
+    %h2{:align => 'center'}Table haml sample
    %div.row
-    %div.col-xs-2
+    %div.col-xs-8
+     %table.table.table-striped
+      - @users.each do |item|
+       %tr
+        %td.text-warning= item.serial
+    %div.col-xs-4
      %table.table
       %tr
        %th.success Menu
       %tr
        %td.success calubo
      %h3 Haml!
-    %div.col-xs-7
-     %p{:class => "text-success", :align => "center"} I love Haml
-    %div.col-xs-3
-     %table.table.table-striped
-      - @users.each do |item|
-       %tr
-        %td.text-warning= item.serial
