@@ -22,7 +22,7 @@ module App
     end      
     # routing
     get '/' do
-      @message = "Bootstrap3 "
+      @message = "erb examples"
       erb :index, locals: {foo: @message}
     end
     get '/test' do
@@ -30,17 +30,16 @@ module App
       erb :test
     end
     get '/haml' do
-      @message = "Sample App Haml"
-      haml :index, locals: {foo: @message}
+      @message = "haml examples"
+      haml :'haml/index', :layout => :'haml/layout'
     end
     get '/haml/table' do
       @users = Gauge.all
-      haml :'sample/table'
+      haml :'haml/table', :layout => :'haml/layout'
     end
     get '/haml/test' do
-      url = 'http://www.msn.com/ja-jp'      
-      robotex = Robotex.new
-      @message = robotex.allowed?(url)
+      @message = "MSN"
+      url = 'http://www.msn.co.jp/'
       # user_agentの偽装
       user_agent = 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.63 Safari/537.36'
       charset = nil
@@ -48,11 +47,17 @@ module App
         charset = f.charset # 文字種別を取得
         f.read
       end
-      @doc = Nokogiri::HTML(html, nil, charset)
-      haml :'sample/test'
+      @doc = Nokogiri::HTML.parse(html, nil, charset)
+      haml :'haml/test', :layout => :'haml/layout'
+    end
+    get '/haml/test1' do
+      @message = "Local File" 
+      file = File.open("source.html")
+      @doc = Nokogiri::HTML.parse(open(file))
+      haml :'haml/test', :layout => :'haml/layout'
     end
     get '/haml/sc' do
-      @message = "スクレイピング"
+      @message = "Yahoo"
       url = 'http://www.yahoo.co.jp/'
       # user_agentの偽装
       user_agent = 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.63 Safari/537.36'
@@ -62,7 +67,7 @@ module App
         f.read
       end
       @doc = Nokogiri::HTML.parse(html, nil, charset)
-      haml :'sample/sc'
+      haml :'haml/sc', :layout => :'haml/layout'
     end
     get '/graph' do
       @message = "Hello Graph Page"
