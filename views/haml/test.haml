@@ -1,5 +1,5 @@
 %div.container
  %h2= @message
  / *************************************************
- - @doc.css("div[class='ip-tab']").each do |node|
-  = node
+ - @doc.css("div[class='ip-tab'] a").each do |node|
+  = ("<a href=http://www.msn.com/#{node[:href]}><p>#{node.text}</p></a>")
