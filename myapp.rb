@@ -58,7 +58,7 @@ module App
     end
     get '/haml/sc' do
       @message = "Yahoo"
-      url = 'http://www.yahoo.co.jp/'
+      url = 'http://news.yahoo.co.jp/hl?c=bus'
       # user_agentの偽装
       user_agent = 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.63 Safari/537.36'
       charset = nil
