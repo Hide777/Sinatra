@@ -1,7 +1,20 @@
 #encoding: utf-8
+require 'rubygems'
+require 'bundler'
+Bundler.require
+#require 'sinatra'
+#require 'sinatra/reloader' if development?
+#require 'sinatra/contrib/all'
+#require 'haml'
+#require 'csv'
+#require 'json'
+#require 'open-uri'
+#require 'nokogiri'
+#require 'robotex'
+
 module App
   class Application < Sinatra::Base 
-    class Gauge < ActiveRecord::Base
+    class Comment < ActiveRecord::Base
     end
     before do
       @edition = "20150714Ed"
@@ -11,7 +24,7 @@ module App
     end
     configure do
       register Sinatra::ActiveRecordExtension
-      set :database, {adapter: "sqlite3", database: "./db/development.sqlite3"}
+      set :database, {adapter: "sqlite3", database: "./db/development.db"}
     end
     def file_convert
       datatime=""
@@ -23,7 +36,14 @@ module App
     # routing
     get '/' do
       @message = "erb examples"
+      @comments = Comment.order('id desc')
       erb :index, locals: {foo: @message}
+    end
+    post '/comment' do
+      Comment.create({
+        body: params[:body],
+        user_id: params[:user_id]
+      })
     end
     get '/test' do
       @message = "Bootstrap3 "

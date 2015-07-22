@@ -11,46 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 1) do
+ActiveRecord::Schema.define(:version => 20150721235549) do
 
-# Could not dump table "DATA" because of following StandardError
-#   Unknown type '' for column 'CL'
-
-# Could not dump table "MASTER" because of following StandardError
-#   Unknown type '' for column 'Name'
-
-  create_table "STANDARD", :primary_key => "Name", :force => true do |t|
-    t.integer "No"
-    t.text    "Spec1",     :null => false
-    t.text    "Spec2",     :null => false
-    t.text    "Standard1"
-    t.text    "Standard2"
-    t.text    "Standard3"
-    t.text    "Standard4"
-    t.text    "Standard5"
-    t.text    "Standard6"
-    t.text    "Standard7"
-    t.text    "Ref1"
-    t.text    "Ref2"
-    t.text    "Ref3"
-    t.text    "Ref4"
-    t.text    "Ref5"
-    t.text    "Ref6"
-    t.text    "Ref7"
-    t.text    "DateStart"
-    t.text    "DateVali"
-  end
-
-  add_index "STANDARD", ["Name", "Spec1", "Spec2", "DateStart"], :name => "sqlite_autoindex_STANDARD_1", :unique => true
-
-# Could not dump table "VENDOR" because of following StandardError
-#   Unknown type '' for column 'VendorCode'
-
-  create_table "posts", :force => true do |t|
-    t.string   "username"
-    t.string   "content"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+  create_table "comments", :force => true do |t|
+    t.string   "user_name"
+    t.string   "body"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.string   "password_digest"
+    t.string   "password"
   end
 
 end
