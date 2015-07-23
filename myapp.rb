@@ -17,7 +17,7 @@ module App
     class Comment < ActiveRecord::Base
     end
     before do
-      @edition = "20150714Ed"
+      @edition = "20150723 Edition"
     end
     configure :development do
       register Sinatra::Reloader
