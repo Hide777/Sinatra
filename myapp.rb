@@ -2,20 +2,10 @@
 require 'rubygems'
 require 'bundler'
 Bundler.require
-#require 'sinatra'
-#require 'sinatra/reloader' if development?
-#require 'sinatra/contrib/all'
-#require 'haml'
-#require 'csv'
-#require 'json'
-#require 'open-uri'
-#require 'nokogiri'
-#require 'robotex'
-
+class Comment < ActiveRecord::Base
+end
 module App
   class Application < Sinatra::Base 
-    class Comment < ActiveRecord::Base
-    end
     before do
       @edition = "20150723 Edition"
     end
@@ -26,13 +16,6 @@ module App
       register Sinatra::ActiveRecordExtension
       set :database, {adapter: "sqlite3", database: "./db/development.db"}
     end
-    def file_convert
-      datatime=""
-      CSV.foreach("./temp.csv","r") do |data|
-         datatime = data
-      end
-      return datatime
-    end      
     # routing
     get '/' do
       @message = "erb examples"
@@ -95,5 +78,13 @@ module App
       data = file_convert
       data.to_json
     end
+    # def
+    def file_convert
+      datatime=""
+      CSV.foreach("./temp.csv","r") do |data|
+         datatime = data
+      end
+      return datatime
+    end    
   end
 end
