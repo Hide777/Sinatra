@@ -3,69 +3,70 @@
 		<h2>Bootstrap <%= @message %></h2>
 		<p class="lead">Basic grid layouts to get you familiar with building within the Bootstrap grid system.</p>
 	</div>
+
     
   <h1>掲示板アプリでAjax</h1>
   <div class="row">
-  <div class="col-xs-8">
-
-  <div class="comment-form">
-    <input id="user-name” type="text" class="form-control" placeholder="名無し” /><br />
-    <textarea id="comment-body" class="form-control" /></textarea><br />
-    <input id="submit-comment" type="button" class="form-control" value="コメントする" />
-    <button type="button" class="btn btn-default"><i class="fa fa-fast-backward"></i></button>
-  </div>
-
-  <div class="comment-view">
-    <div id="comments">
-    </div>
-  </div>
-  </div>
+	  <div class="col-xs-8">
+		  <div class="comment-form">
+		    <input type="text" id="user_id" placeholder="名無し" /><br />
+		    <textarea id="comment-body" /></textarea><br />
+		    <input id="submit-comment" type="button" value="コメントする" />
+		  </div>
+		  
+		  <div class="comment-view">
+		    <div id="comments">
+		      <% @comments.each do |comment| %>
+		        <p><%= escape_html "#{comment.body} by #{comment.user_id}" %></p>
+		      <% end %>
+		    </div>
+		  </div>
+		  
+	  </div>
   </div>
 </div>
 
+
+
 <script type="text/javascript">
+    function escapeHTML(s) {
+      return $('<div>').text(s).html();
+    }
     $(function(){
       $("#submit-comment").click(function(){
+ 				confirm('本当に削除しますか？')
         var comment = $("#comment-body").val();
-        var userId = $("#user-id").val();
+        var userId = $("#user_id").val();
         if(userId.length == 0) userId = "名無し" ;
         var request = $.ajax({
           type: "POST",
           url: "/comment",
           data: {
             body: comment,
-            user_id:  userId
+            user_id: userId
           }
         });
+        
+<!--        request.done(function(msg){
+            $("#comments").prepend(msg);
+          });
+        });
+-->        
       });
     });
 </script>
 
-<div class="controls">
 
-  <!-- 大 -->
-  <input class="form-control input-lg" type="text" placeholder=".input-lg">
-
-  <!-- 中 -->
-  <input class="form-control" type="text" placeholder="Default input">
-
-  <!-- 小 -->
-  <input class="form-control input-sm" type="text" placeholder=".input-sm">
-
-</div>
-
-<!-- 
-  Formの幅調節
--->
-
-<div class="row">
-  <div class="col-xs-2">
-    <input type="text" class="form-control" placeholder=".col-xs-2">
-  </div>
-  <div class="col-xs-3">
-    <input type="text" class="form-control" placeholder=".col-xs-3">
-  </div>
-  <div class="col-xs-4">
-    <input type="text" class="form-control" placeholder=".col-xs-4">
-  </div>
+<div class="container">
+	<div class="row">
+	  <div class="col-xs-2">
+	    <input type="text" class="form-control" placeholder=".col-xs-2">
+	  </div>
+	  <div class="col-xs-3">
+	    <input type="text" class="form-control" placeholder=".col-xs-3">
+	  </div>
+	  <div class="col-xs-4">
+	    <input type="text" class="form-control" placeholder=".col-xs-4">
+	  </div>
+	</div>
 </div>

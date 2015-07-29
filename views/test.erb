@@ -1,40 +1,48 @@
-<!-- 1. navbarのラッパーをとなるdivに.navbarを設定する -->
-<div class="navbar navbar-default" role="navigation">
-	<div class="container-fluid">
-		<!-- 2. ナビゲーションのヘッダ部分の定義 -->
-		<div class="navbar-header">
-			<!-- 3. サイト名とメニューが折りたたまれた時のトグルボタンを定義 -->
-			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href="#">Project name</a>
-		</div><!--/.navbar-header -->
-		
-		<!-- 4. 実際のメニュー部分を記述する -->
-		<div class="navbar-collapse collapse">
-			<ul class="nav navbar-nav">
-				<li class="active"><a href="#">Link</a></li>
-				<li><a href="#">Link</a></li>
-				<li><a href="#">Link</a></li>
-				
-				<!--
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
-					<ul class="dropdown-menu" role="menu">
-						<li><a href="#">Action</a></li>
-						<li><a href="#">Another action</a></li>
-						<li><a href="#">Something else here</a></li>
-						<li class="divider"></li>
-						<li class="dropdown-header">Nav header</li>
-						<li><a href="#">Separated link</a></li>
-						<li><a href="#">One more separated link</a></li>
-					</ul>
-				</li> -->
-			
-			</ul>
-		</div><!--/.nav-collapse -->
-	</div><!--/.container-fluid -->
-</div> <!-- /container -->
+<h1>掲示板アプリでAjax</h1>
+
+<div class="comment-form">
+  <input type="text" id="user_id" placeholder="名無し" /><br />
+  <textarea id="comment-body" /></textarea><br />
+  <input id="submit-comment" type="button" value="コメントする" />
+</div>
+
+<div class="comment-view">
+  <div id="comments">
+    <% @comments.each do |comment| %>
+      <p><%= escape_html "#{comment.body} by #{comment.user_id}" %></p>
+    <% end %>
+  </div>
+</div>
+	  
+
+<script type="text/javascript">
+function escapeHTML(s){
+	return $('<div>').text(s).html();
+}
+$(function(){
+	$("#submit-comment").click(function(){
+		confirm('本当に削除しますか？');
+		var comment = $("#comment-body").val();
+		var userId = $("#user_id").val();
+		if(userId.length == 0) userId = "名無し" ;
+		var request = $.ajax({
+			type: "POST",
+			url: "/comment",
+			data: {
+			body: comment,
+			user_id: userId
+			}
+		});
+	});
+	
+	Request.done(function(msg){
+		console.log(this);
+		$.ajax({
+			type: "GET",
+			url: "/comments/last"
+		}).done(function(res){
+			$("#comments").prepend('<p>' + escapeHTML(res.body + ' by ' + escapeHTML(res.user_id) + '</p>'));
+		  });
+	});
+});
+</script>

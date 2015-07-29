@@ -23,13 +23,24 @@ module App
       erb :index, locals: {foo: @message}
     end
     post '/comment' do
+      user_id = "名無し"
+    
+      if params[:user_id]
+        user_id = params[:user_id]
+      end
+    
       Comment.create({
         body: params[:body],
-        user_id: params[:user_id]
+        user_id: user_id
       })
+    end
+    get '/comments/last' do
+      comment = Comment.last
+      {comment_body: comment.body, user_id: comment.user_id}.to_json
     end
     get '/test' do
       @message = "Bootstrap3 "
+      @comments = Comment.order('id desc')
       erb :test
     end
     get '/haml' do
