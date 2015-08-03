@@ -1,58 +1,53 @@
 <!DOCTYPE html>
 <html lang="jp">
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title><%= @message %><%= @edition %></title>
-		<link href="../css/bootstrap.min.css" rel="stylesheet">
-		<link href="../css/my.css" rel="stylesheet">
-		<link href="../css/test.css" rel="stylesheet">
-	</head>
+<head vice-width, initial-scale=1">
+	<title><%= @message %><%= @edition %></title>
+	<link href="../css/bootstrap.min.css" rel="stylesheet">
+	<link href="../css/my.css" rel="stylesheet">
+	<link href="../css/test.css" rel="stylesheet">
+</head>
+
+<body background="../images/top-image.jpg" backg
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width-deround" repeat="no-repeat">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
 	
-	<body background="../images/top-image.jpg" background-repeat="no-repeat">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		<script src="../js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>	
-		
-		<div id='wrap'>
-			<nav class="navbar navbar-default navbar-fixed-top">
-				<div class="container">
-					<div class="navbar-header">
-						<a class="navbar-brand" href="/haml">Erb システム</a>
-			      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-				      <span class="sr-only">Toggle navigation</span>
-				      <span class="icon-bar"></span>
-				      <span class="icon-bar"></span>
-				      <span class="icon-bar"></span>
-	          </button>
-					</div>
-					<!-- リストの配置 -->
-	        <div class="navbar-collapse collapse">
+	<div id='wrap'>
+		<nav class="navbar navbar-default navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="/">Erb システム</a>
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					      <span class="sr-only">Toggle navigation</span>
+					      <span class="icon-bar"></span>
+					      <span class="icon-bar"></span>
+					      <span class="icon-bar"></span>
+					</button>
+				</div>
+				<!-- リストの配置 -->
+				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
-						<li class="active"><a href="/">お知らせ</a></li>
+						<li class="active"><a href="/haml">切り替え</a></li>
 						<li><a href="/test">在庫確認</a></li>
 						<li><a href="/test">テスト</a></li>
-					</ul>
-					
-					<!-- ボタン -->
+					</ul>					
 					<button type="button" onclick="location.href='/test'" class="btn btn-default navbar-btn">
 						<span class="glyphicon glyphicon-envelope"></span>
-					</button>
-					
-					</div>
-					
+					</button>				
 				</div>
-			</nav>
-			<div class="container">	
-				<%= yield %>
 			</div>
-		</div>  
-		<div id='footer'>
-			<div class="container">		
-				<p></p>
-				<p align="center">Copyright &#169; 2015 dolphin.com All Rights Reserved.</p>
-			</div>
+		</nav>
+		<div class="container">	
+			<%= yield %>
 		</div>
-	</body>
+	</div>  
+	<div id='footer'>
+		<div class="container">		
+			<p></p>
+			<p align="center">Copyright &#169; 2015 dolphin.com All Rights Reserved.</p>
+		</div>
+	</div>
+</body>
 </html>

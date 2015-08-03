@@ -7,7 +7,7 @@ end
 module App
   class Application < Sinatra::Base 
     before do
-      @edition = "20150723 Edition"
+      @edition = "20150731 Edition"
     end
     configure :development do
       register Sinatra::Reloader
@@ -19,7 +19,6 @@ module App
     # routing
     get '/' do
       @message = "erb examples"
-      @comments = Comment.order('id desc')
       erb :index, locals: {foo: @message}
     end
     post '/comment' do
@@ -36,7 +35,7 @@ module App
     end
     get '/comments/last' do
       comment = Comment.last
-      {comment_body: comment.body, user_id: comment.user_id}.to_json
+      {body: comment.body, user_id: comment.user_id}.to_json
     end
     get '/test' do
       @message = "Bootstrap3 "
