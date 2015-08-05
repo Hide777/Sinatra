@@ -1,21 +1,26 @@
 <div class="container">
 	<h1><%= "掲示板アプリでAjax #{@message}" %></h1>
 	<div class="comment-form" >
-	  <input type="text" id="user_id" class="form-control" placeholder="名無し" /><br />
-	  <textarea id="comment-body" class="form-control" rows="3" /></textarea><br />
-	  <input type="button" id="submit-clear" class="btn btn-default" value="コメント削除" />
-	  <input type="button" id="submit-comment" class="btn btn-default" value="コメントする" /><br /><br />
+		<input type="text" id="user_id" class="form-control" placeholder="名無し" /><br />
+		<textarea id="comment-body" class="form-control" rows="3" /></textarea><br />
+		<input type="button" id="submit-clear" class="btn btn-default" value="コメント削除" />
+		<input type="button" id="submit-comment" class="btn btn-default" value="コメントする" /><br /><br />
 	</div>	
+	<div id="sample">ここが変更されます</div>	
+	<input type="button" class="btn btn-default" value="変更" onClick="change()">
 	<div class="comment-view">
-	  <div id="comments">
-	    <% @comments.each do |comment| %>
-	      <p><%= escape_html "#{comment.body} by #{comment.user_id}" %></p>
-	    <% end %>
-	  </div>
+		<div id="comments">
+			<% @comments.each do |comment| %>
+				<p><%= escape_html "#{comment.body} by #{comment.user_id}" %></p>
+			<% end %>
+		</div>
 	</div>
 </div>
 
 <script type="text/javascript">
+function change(){
+    var val = document.getElementById("sample").innerHTML = "変更されました";
+}
 function escapeHTML(s){
 	return $('<div>').text(s).html();
 }

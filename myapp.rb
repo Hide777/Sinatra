@@ -37,10 +37,20 @@ module App
       comment = Comment.last
       {body: comment.body, user_id: comment.user_id}.to_json
     end
+    get '/comments/clear' do
+      @message = "erb clear"
+      @comments = Comment.destroy_all()
+      redirect '/test1'
+    end
     get '/test' do
-      @message = "Bootstrap3 "
+      @message = "Test "
       @comments = Comment.order('id desc')
       erb :test
+    end
+    get '/test1' do
+      @message = "Test1 "
+      @comments = Comment.order('id desc')
+      erb :test1
     end
     get '/haml' do
       @message = "haml examples"
