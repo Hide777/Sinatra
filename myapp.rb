@@ -9,6 +9,9 @@ module App
     before do
       @edition = "20150731 Edition"
     end
+    after do
+      ActiveRecord::Base.connection.close
+    end
     configure :development do
       register Sinatra::Reloader
     end
